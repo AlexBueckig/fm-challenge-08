@@ -40,7 +40,7 @@ const URLShortener: React.FC = () => {
           aria-label="url input"
           placeholder="Shorten a link here..."
         />
-        <p className="shortener__error-text">Please add a valid link</p>
+        <span className="shortener__error-text">Please add a valid link</span>
       </label>
       <button type="submit" className="button">
         Shorten It!
