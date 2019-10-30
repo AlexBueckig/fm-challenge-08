@@ -10,6 +10,7 @@ const buffer = require('vinyl-buffer');
 const tsify = require('tsify');
 const uglify = require('gulp-uglify');
 const glob = require('glob').sync;
+const terser = require('gulp-terser');
 
 const paths = {
   pages: ['./*.html'],
@@ -60,20 +61,16 @@ const buildBundle = () => {
   return browserify({
     basedir: '.',
     debug: true,
-    entries: glob('./src/**/*.{ts,tsx}'),
+    entries: glob('./src/**/*.*'),
     cache: {},
     packageCache: {}
   })
     .plugin(tsify)
-    .transform('babelify', {
-      presets: ['env', 'react'],
-      extensions: ['.ts', '.tsx']
-    })
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist'));
 };
