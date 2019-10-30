@@ -1,0 +1,28 @@
+.container {
+  padding: 0 2em;
+}
+
+@include for-desktop-up {
+  .container {
+    padding: 0 10em;
+    margin: 0 auto;
+
+    &--hero {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 60% 40%;
+      grid-template-rows: 1fr max-content 1fr;
+      gap: 0 2em;
+      grid-template-areas:
+        'title image'
+        'subtitle image'
+        'button image';
+    }
+  }
+}
+
+@include for-big-desktop-up {
+  .container {
+    padding: 0 20em;
+  }
+}

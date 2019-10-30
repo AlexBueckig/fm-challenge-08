@@ -1,0 +1,23 @@
+.template {
+  padding-bottom: 4.25em;
+  background: lighten(map-get($map: $colors-neutral, $key: gray), 20%);
+
+  &--no-padding {
+    padding-bottom: 0;
+  }
+
+  &__title {
+    margin-bottom: 1em;
+  }
+}
+
+@include for-desktop-up {
+  .template {
+    padding-bottom: 8em;
+
+    &__paragraph {
+      margin: 0 auto 8em;
+      max-width: 580px;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: map-get($map: $colors-neutral, $key: very-dark-violet);
+
+  &__title {
+    margin: 1.5em 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin-bottom: 2em;
+  }
+
+  &__list--social {
+    display: flex;
+  }
+
+  &__list-title {
+    margin-bottom: 1em;
+  }
+
+  &__list-item {
+    margin: 0.4em 0.5em;
+  }
+}
+
+@include for-desktop-up {
+  .footer {
+    padding-top: 3em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__title {
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    &__list {
+      margin-left: 4em;
+    }
+
+    &__list-item {
+      margin: 0.4em 0;
+    }
+
+    &__list--social {
+      .footer__list-item {
+        margin-left: 1em;
+      }
+    }
+  }
+}

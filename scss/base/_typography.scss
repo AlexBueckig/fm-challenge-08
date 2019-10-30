@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:500,700&display=swap');
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.button {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.nav__button {
+  font-size: 1.6rem;
+}
+
+.nav__link,
+.footer__link {
+  transition: color 300ms ease;
+
+  svg {
+    path {
+      transition: fill 300ms ease;
+    }
+  }
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.nav__link--logo {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.hero,
+.template,
+.cta,
+.footer,
+.nav {
+  text-align: center;
+}
+
+.nav__link:hover,
+.nav__link:focus,
+.footer__link:hover,
+.footer__link:focus {
+  color: map-get($map: $colors-primary, $key: cyan);
+
+  svg {
+    path {
+      fill: map-get($map: $colors-primary, $key: cyan);
+    }
+  }
+}
+
+.nav__link--logo,
+.nav__link--logo:hover,
+.nav__link--logo:focus,
+.hero__title {
+  color: map-get($map: $colors-neutral, $key: very-dark-blue);
+}
+
+.hero__title {
+  font-size: 2.25rem;
+}
+
+.hero__subtitle,
+.nav__button {
+  color: map-get($map: $colors-neutral, $key: grayish-violet);
+}
+
+.template__title,
+.card__title {
+  color: map-get($map: $colors-neutral, $key: very-dark-violet);
+}
+
+.cta__title,
+.footer__title,
+.footer__link,
+.footer__list-title,
+.footer__list-item {
+  color: white;
+}
+
+.template__paragraph,
+.card__paragraph,
+.footer__link {
+  color: map-get($map: $colors-neutral, $key: grayish-violet);
+}
+
+.template__paragraph,
+.footer__list-title {
+  font-size: 0.9rem;
+}
+
+.card__paragraph {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.footer__title {
+  font-size: 1.75rem;
+}
+
+.footer__link {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.shortener__input {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.urlCard {
+  text-align: left;
+}
+.urlCard__url,
+.urlCard__short {
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+}
+.urlCard__short {
+  color: map-get($map: $colors-primary, $key: cyan);
+}
+.urlCard__url {
+  color: map-get($map: $colors-primary, $key: grayish-violet);
+}
+
+@include for-desktop-up {
+  .hero,
+  .footer,
+  .nav,
+  .card {
+    text-align: left;
+  }
+
+  .hero__title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+
+  .hero__subtitle {
+    font-size: 1.3rem;
+  }
+
+  .cta__title,
+  .template__title {
+    font-size: 2.25rem;
+  }
+
+  .template__paragraph {
+    font-size: 1.1rem;
+  }
+
+  .nav__link {
+    color: map-get($map: $colors-neutral, $key: grayish-violet);
+    font-size: 0.9rem;
+  }
+
+  .nav__link--logo {
+    color: map-get($map: $colors-neutral, $key: very-dark-blue);
+    font-size: 2rem;
+  }
+
+  .nav__link:hover,
+  .nav__link:focus {
+    color: map-get($map: $colors-neutral, $key: very-dark-blue);
+  }
+
+  .button--nav {
+    font-size: 0.9rem;
+  }
+}

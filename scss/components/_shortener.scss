@@ -1,0 +1,64 @@
+.shortener {
+  width: 100%;
+  background: url('../images/bg-shorten-mobile.svg'), map-get($map: $colors-primary, $key: dark-violet);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: top right;
+  transform: translateY(-50%);
+
+  &--error {
+    .shortener__input {
+      border-color: $color-secondary;
+
+      &::placeholder {
+        color: $color-secondary;
+        opacity: 0.6;
+      }
+    }
+
+    .shortener__error-text {
+      display: block;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 1em;
+  }
+
+  &__error-text {
+    display: none;
+    text-align: left;
+    font-style: italic;
+    color: $color-secondary;
+    font-size: 0.7rem;
+    margin-top: 0.5em;
+  }
+
+  &__input {
+    padding: 0.7em;
+    border: 3px solid white;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+@include for-desktop-up {
+  .shortener {
+    flex-direction: row;
+    background-image: url('../images/bg-shorten-desktop.svg');
+
+    &__label {
+      margin: 0;
+      flex-grow: 1;
+      margin-right: 1.5em;
+    }
+
+    &__input {
+      margin: 0;
+    }
+  }
+}

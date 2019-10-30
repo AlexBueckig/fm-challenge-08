@@ -1,0 +1,18 @@
+.cta {
+  background: url('../images/bg-boost-mobile.svg'), map-get($map: $colors-primary, $key: dark-violet);
+  background-position: center;
+  background-size: 100%;
+  padding: 5em 0;
+
+  &__title {
+    margin-bottom: 0.5em;
+  }
+}
+
+@include for-desktop-up {
+  .cta {
+    padding: 3em 0;
+    background-image: url('../images/bg-boost-desktop.svg');
+    height: 250px;
+  }
+}

@@ -1,0 +1,48 @@
+.button {
+  display: inline-block;
+  background: map-get($map: $colors-primary, $key: cyan);
+  padding: 0.75em 2.25em;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+
+  &:hover {
+    background: lighten(map-get($map: $colors-primary, $key: cyan), 15%);
+  }
+
+  &--round {
+    border-radius: 50px;
+  }
+
+  &--nav {
+    width: 100%;
+  }
+
+  &--url {
+    margin: 1em;
+    margin-top: 0;
+  }
+
+  &--copied {
+    background: map-get($map: $colors-primary, $key: dark-violet);
+
+    &:hover {
+      background: lighten(map-get($map: $colors-primary, $key: dark-violet), 15%);
+    }
+  }
+}
+
+@include for-desktop-up {
+  .button {
+    &--nav {
+      width: auto;
+      padding: 0.5em 1.25em;
+    }
+
+    &--url {
+      margin: 0;
+      padding: 0.5em 2em;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.hero {
+  margin-bottom: 10em;
+  overflow: hidden;
+
+  &__image {
+    height: 325px;
+    object-fit: cover;
+    object-position: left;
+    margin-bottom: 1.75em;
+  }
+
+  &__title {
+    margin-bottom: 0.25em;
+  }
+
+  &__subtitle {
+    margin-bottom: 2em;
+  }
+}
+
+@include for-desktop-up {
+  .hero {
+    overflow: visible;
+
+    &__image {
+      grid-area: image;
+      margin-bottom: 0;
+      height: 450px;
+    }
+
+    &__title {
+      grid-area: title;
+      margin-top: auto;
+    }
+
+    &__subtitle {
+      grid-area: subtitle;
+    }
+
+    .button {
+      margin-bottom: auto;
+      margin-right: auto;
+    }
+  }
+}
