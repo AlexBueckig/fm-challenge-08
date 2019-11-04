@@ -12,19 +12,12 @@ const URLShortener: React.FC = () => {
 
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    const url = inputRef.current.value;
 
-    if (inputRef.current.value.match(regex)) {
+    if (url.match(regex)) {
       setError(false);
-      const res = await fetch('https://rel.ink/api/links/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: inputRef.current.value })
-      });
-      if (res.status === 500) throw Error('server unreachable');
-      const json = await res.json();
-      addUrl({ url: json.url, shortenedUrl: `https://rel.ink/${json.hashid}` });
+      addUrl(url);
     } else {
-      console.log('url invalid...');
       setError(true);
     }
   };

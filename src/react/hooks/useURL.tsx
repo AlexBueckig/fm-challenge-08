@@ -7,19 +7,37 @@ export interface URL {
 
 interface State {
   urls: URL[];
-  addUrl: (url: URL) => void;
+  addUrl: (url: string) => void;
 }
 
 const URLContext = React.createContext<State>({ urls: [], addUrl: () => {} });
 
-const useURL = () => React.useContext(URLContext);
+const useURL = () => {
+  const context = React.useContext(URLContext);
+
+  if (!context) throw new Error('Component needs to be wrapped inside URLProvider...');
+
+  return context;
+};
+
+const getShortenedURL = async (url: string) => {
+  const res = await fetch('https://rel.ink/api/links/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ url })
+  });
+  if (res.status === 500) throw Error('server unreachable');
+  const json = await res.json();
+  return json;
+};
 
 const URLProvider: React.FC = props => {
   const [urlList, setUrlList] = React.useState<URL[]>([]);
 
-  const addUrl = (url: URL) => {
-    localStorage.setItem('shortenedUrls', JSON.stringify([...urlList, url]));
-    setUrlList([...urlList, url]);
+  const addUrl = async (url: string) => {
+    const shortenedUrl = await getShortenedURL(url);
+    localStorage.setItem('shortenedUrls', JSON.stringify([...urlList, { url, shortenedUrl }]));
+    setUrlList([...urlList, { url, shortenedUrl }]);
   };
 
   React.useEffect(() => {
