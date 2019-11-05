@@ -63,7 +63,7 @@ const buildBundle = () => {
   return browserify({
     basedir: '.',
     debug: true,
-    entries: ['./src/react/main.tsx'],
+    entries: ['./src/react/main.tsx', './src/nav.ts'],
     cache: {},
     packageCache: {}
   })
