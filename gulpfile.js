@@ -8,9 +8,9 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const tsify = require('tsify');
-const uglify = require('gulp-uglify');
 const glob = require('glob').sync;
 const terser = require('gulp-terser');
+const uglifyify = require('uglifyify');
 
 const paths = {
   pages: ['./*.html'],
@@ -58,19 +58,31 @@ const bundle = () => {
 };
 
 const buildBundle = () => {
+  process.env.NODE_ENV = 'production';
+
   return browserify({
     basedir: '.',
     debug: true,
-    entries: glob('./src/**/*.*'),
+    entries: ['./src/react/main.tsx'],
     cache: {},
     packageCache: {}
   })
     .plugin(tsify)
+    .transform('babelify', {
+      presets: [['@babel/preset-env', {}], '@babel/preset-react'],
+      extensions: ['.ts', '.tsx']
+    })
+    .transform(uglifyify)
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(terser())
+    .pipe(
+      terser({
+        mangle: true,
+        compress: true
+      })
+    )
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist'));
 };
